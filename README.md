@@ -48,9 +48,9 @@ wlan.connect('ssid', 'password')
 sleep(5)
 
 mip.install("github:octopuslab-cz/esp32_micropython_framework/package_min.json", target=".")
+```
 
-
-=====================================================================
+---
 
 # ESP32C3 Supermini – octopusLAB MicroPython Framework
 
