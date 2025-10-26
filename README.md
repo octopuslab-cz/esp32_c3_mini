@@ -90,17 +90,9 @@ from components.led import Led
 pinout = set_pinout()
 led = Led(pinout.BUILT_IN_LED)
 
-for blink in range(3):
-    led.value(0)
-    sleep_ms(500)
-    led.value(1)
-    sleep_ms(500)
-
-"""
-while True:
+for blink in range(5):
     led.toggle()
     sleep_ms(500)
-"""
 ```
 
 ### Read Button
