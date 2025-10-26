@@ -84,31 +84,52 @@ mip.install("github:octopuslab-cz/esp32_micropython_framework/package_min.json",
 
 ### Blink LED
 ```python
-from time import sleep_ms
-from machine import Pin
+from utils.pinout import set_pinout
+from components.led import Led
 
-led = Pin(7, Pin.OUT)
+pinout = set_pinout()
+led = Led(pinout.BUILT_IN_LED)
+
+for blink in range(3):
+    led.value(0)
+    sleep_ms(500)
+    led.value(1)
+    sleep_ms(500)
+
+"""
 while True:
     led.toggle()
     sleep_ms(500)
+"""
 ```
 
 ### Read Button
 ```python
 from machine import Pin
 
-button = Pin(0, Pin.IN, Pin.PULL_UP)
+button = Pin(9, Pin.IN, Pin.PULL_UP)
 print("Button pressed:", not button.value())
+```
+
+### I2C setup | test
+```python
+from octopus_lib import i2c_init
+i2c = i2c_init()
+print(i2c.scan())
 ```
 
 ## 📁 Folder Structure
 
 ```
-/main.py
-/libs/
-  ├── device/
-  ├── network/
-  └── examples/
+  
+  ├── component/
+  ├── config/
+  ├── examples/
+  ├── config/
+  ├── lib/
+  ├── pinouts/
+  └── utils/
+  /main.py
 ```
 
 ## 🧩 Notes
@@ -116,6 +137,8 @@ print("Button pressed:", not button.value())
 - Tested on **ESP32C3 Supermini (Ai-Thinker)**.
 - Compatible with **octopusLAB Framework v1.9+**.
 - Examples can be executed directly from Thonny.
+
+---
 
 ## 🪴 Author & License
 
